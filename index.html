@@ -24,5 +24,49 @@
       <p><img src="https://i1.sndcdn.com/artworks-RnuvYkDHcfpJo5UJ-IHUeZA-t500x500.jpg" alt="pleb no dmca"/></p>
       <p>copyright -69 me inc</p>
     </center>
+    <div class="th-shet">
+      <div id="discord-list">Loading...</div>
+      <p><a href="https://discord.gg/xSYC3DP6">JOIN TH BERI SEBER</a></p>
+    </div>
+
+    <script>
+      async function loadDiscordUsers() {
+      const WORKER_URL = 'https://dcapi.rtx3080ti0415.qzz.io/';
+      const container = document.getElementById('discord-list');
+    
+      try {
+        const response = await fetch(WORKER_URL);
+        const data = await response.json();
+    
+        container.innerHTML = ''; // Clear loading text
+    
+        data.users.forEach(user => {
+          // Create an image element
+          const img = document.createElement('img');
+          img.src = user.icon;
+          
+          // Set size directly via attributes since you don't want CSS
+          img.width = 30;
+          img.height = 30;
+          img.alt = user.name;
+    
+          // Create a text node for the name
+          const name = document.createTextNode(` ${user.name}`);
+    
+          // Create a line break
+          const br = document.createElement('br');
+    
+          // Add them to the page
+          container.appendChild(img);
+          container.appendChild(name);
+          container.appendChild(br);
+        });
+      } catch (error) {
+        container.textContent = 'Error loading users.';
+      }
+    }
+    
+    loadDiscordUsers();
+    </script>
   </body>
 </html>  
