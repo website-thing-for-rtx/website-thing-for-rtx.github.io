@@ -45,52 +45,8 @@
       <hr width="90%">
       
       <p><img src="https://i1.sndcdn.com/artworks-RnuvYkDHcfpJo5UJ-IHUeZA-t500x500.jpg" alt="pleb no dmca"/></p>
-      <p>copyright -69 me inc</p>
-    </center>
 
-    <script>
-      async function loadDiscordUsers() {
-      const WORKER_URL = 'https://dcapi.rtx3080ti0415.qzz.io/';
-      const container = document.getElementById('discord-list');
-    
-      try {
-        const response = await fetch(WORKER_URL);
-        const data = await response.json();
-    
-        container.innerHTML = ''; // Clear loading text
-    
-        data.users.forEach(user => {
-          // Create an image element
-          const img = document.createElement('img');
-          img.src = user.icon;
-          
-          // Set size directly via attributes since you don't want CSS
-          img.width = 30;
-          img.height = 30;
-          img.alt = user.name;
-    
-          // Create a text node for the name
-          const name = document.createTextNode(` ${user.name}`);
-    
-          // Create a line break
-          const br = document.createElement('br');
-    
-          // Add them to the page
-          container.appendChild(img);
-          container.appendChild(name);
-          container.appendChild(br);
-        });
-      } catch (error) {
-        container.textContent = 'Error loading users.';
-      }
-    }
-    
-    loadDiscordUsers();
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/gh/leonardosnt/mc-player-counter/dist/mc-player-counter.min.js"></script>
-
-    <br>
+      <br>
     <br>
     <br>
 
@@ -139,5 +95,52 @@
     
     <a href="https://theoldnet.com/get?year=1996&scripts=false&decode=false&url=http://oldavista.com">
     <img border="0" src="https://theoldnet.com/images/oldavista.gif"></a>
+      
+      <p>copyright -69 me inc</p>
+    </center>
+
+    <script>
+      async function loadDiscordUsers() {
+      const WORKER_URL = 'https://dcapi.rtx3080ti0415.qzz.io/';
+      const container = document.getElementById('discord-list');
+    
+      try {
+        const response = await fetch(WORKER_URL);
+        const data = await response.json();
+    
+        container.innerHTML = ''; // Clear loading text
+    
+        data.users.forEach(user => {
+          // Create an image element
+          const img = document.createElement('img');
+          img.src = user.icon;
+          
+          // Set size directly via attributes since you don't want CSS
+          img.width = 30;
+          img.height = 30;
+          img.alt = user.name;
+    
+          // Create a text node for the name
+          const name = document.createTextNode(` ${user.name}`);
+    
+          // Create a line break
+          const br = document.createElement('br');
+    
+          // Add them to the page
+          container.appendChild(img);
+          container.appendChild(name);
+          container.appendChild(br);
+        });
+      } catch (error) {
+        container.textContent = 'Error loading users.';
+      }
+    }
+    
+    loadDiscordUsers();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/leonardosnt/mc-player-counter/dist/mc-player-counter.min.js"></script>
+
+    
   </body>
 </html>  
