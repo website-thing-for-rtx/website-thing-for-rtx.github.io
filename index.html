@@ -104,39 +104,30 @@
         const response = await fetch(WORKER_URL);
         const data = await response.json();
     
-        container.innerHTML = ''; // Clear loading text
+        container.innerHTML = '';
     
         data.users.forEach(user => {
-          // Create an image element
           const img = document.createElement('img');
           img.src = user.icon;
           
-          // Set size directly via attributes since you don't want CSS
           img.width = 30;
           img.height = 30;
           img.alt = user.name;
     
-          // Create a text node for the name
           const name = document.createTextNode(` ${user.name}`);
     
-          // Create a line break
           const br = document.createElement('br');
     
-          // Add them to the page
           container.appendChild(img);
           container.appendChild(name);
           container.appendChild(br);
         });
       } catch (error) {
-        container.textContent = 'Error loading users.';
+        container.textContent = 'th bad happened';
       }
     }
     
     loadDiscordUsers();
     </script>
-
-    <script src="https://cdn.jsdelivr.net/gh/leonardosnt/mc-player-counter/dist/mc-player-counter.min.js"></script>
-
-    
   </body>
 </html>  
