@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pixel to Color Text Converter (Scale + Width)</title>
+<style>
+body {
+    font-family: monospace;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 400px;
+    margin-top: 10px;
+    white-space: pre;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>image to pcsim text convertor</h2>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<label>
+Scale:
+<input type="range" id="scaleSlider" min="0.05" max="1" step="0.05" value="0.25">
+<span id="scaleValue">0.25</span> (recommended 0.35)
+</label>
+
+<label>
+Width Stretch:
+<input type="range" id="widthSlider" min="0.25" max="3" step="0.05" value="1">
+<span id="widthValue">1</span> (recommended 1.85)
+</label>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<textarea id="output" placeholder="Result will appear here..."></textarea>
+
+<script>
+const input = document.getElementById("imageInput");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const output = document.getElementById("output");
+
+const scaleSlider = document.getElementById("scaleSlider");
+const widthSlider = document.getElementById("widthSlider");
+
+const scaleValue = document.getElementById("scaleValue");
+const widthValue = document.getElementById("widthValue");
+
+let currentImage = null;
+
+scaleSlider.addEventListener("input", update);
+widthSlider.addEventListener("input", update);
+
+function update() {
+    scaleValue.textContent = scaleSlider.value;
+    widthValue.textContent = widthSlider.value;
+
+    if (currentImage) processImage(currentImage);
+}
+
+function rgbToHex(r, g, b) {
+    return "#" +
+        r.toString(16).padStart(2, "0") +
+        g.toString(16).padStart(2, "0") +
+        b.toString(16).padStart(2, "0");
+}
+
+input.addEventListener("change", function () {
+    const file = input.files[0];
+    if (!file) return;
+
+    const img = new Image();
+
+    img.onload = function () {
+        currentImage = img;
+        processImage(img);
+    };
+
+    img.src = URL.createObjectURL(file);
+});
+
+function processImage(img) {
+    const scale = parseFloat(scaleSlider.value);
+    const widthStretch = parseFloat(widthSlider.value);
+
+    const width = Math.floor(img.width * scale * widthStretch);
+    const height = Math.floor(img.height * scale);
+
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx.clearRect(0, 0, width, height);
+
+    ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+    );
+
+    const imageData = ctx.getImageData(0, 0, width, height);
+    const data = imageData.data;
+
+    let result = "";
+
+    for (let y = 0; y < height; y++) {
+
+        for (let x = 0; x < width; x++) {
+
+            const index = (y * width + x) * 4;
+
+            const r = data[index];
+            const g = data[index + 1];
+            const b = data[index + 2];
+
+            const hex = rgbToHex(r, g, b);
+
+            result += `<color=${hex}>█</color>`;
+        }
+
+        result += "\n";
+    }
+
+    output.value = result;
+}
+</script>
+
+</body>
+</html>
