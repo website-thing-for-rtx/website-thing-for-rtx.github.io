@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Pixel to Color Text Converter (Scale + Width)</title>
+<title>image converter or smth</title>
 <style>
 body {
     font-family: monospace;
@@ -44,11 +44,24 @@ Width Stretch:
 
 <textarea id="output" placeholder="Result will appear here..."></textarea>
 
+<h3>Preview:</h3>
+
+<div id="preview" style="
+    font-family: monospace;
+    line-height: 1;
+    white-space: pre;
+    background: #111;
+    padding: 10px;
+    overflow: auto;
+    max-height: 400px;
+"></div>
+
 <script>
 const input = document.getElementById("imageInput");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const output = document.getElementById("output");
+const preview = document.getElementById("preview");
 
 const scaleSlider = document.getElementById("scaleSlider");
 const widthSlider = document.getElementById("widthSlider");
@@ -113,6 +126,7 @@ function processImage(img) {
     const data = imageData.data;
 
     let result = "";
+    let previewHTML = "";
 
     for (let y = 0; y < height; y++) {
 
@@ -127,12 +141,16 @@ function processImage(img) {
             const hex = rgbToHex(r, g, b);
 
             result += `<color=${hex}>█</color>`;
+
+            previewHTML += `<span style="color:${hex}">█</span>`;
         }
 
         result += "\n";
+        previewHTML += "<br>";
     }
 
     output.value = result;
+    preview.innerHTML = previewHTML;
 }
 </script>
 
