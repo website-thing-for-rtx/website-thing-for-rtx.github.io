@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors</title>
+    <style>
+        :root {
+            --primary-color: #4078c0;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #f0f6fc;
+        }
+
+        .description {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sponsor-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-4px);
+            border-color: #8b949e;
+        }
+
+        .sponsor-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+            background: #21262d;
+            border: 1px solid var(--border-color);
+        }
+
+        .sponsor-name {
+            display: block;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #f0f6fc;
+        }
+
+        .tier-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: rgba(56, 139, 253, 0.15);
+            color: #58a6ff;
+            margin-top: 8px;
+            text-transform: uppercase;
+            border: 1px solid rgba(56, 139, 253, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/" class="back-link">← Back to Gitea</a>
+
+    <div class="container">
+        <header>
+            <h1>Our Sponsors</h1>
+            <p class="description">We are grateful for the support of these organizations and individuals.</p>
+        </header>
+
+        <div class="sponsor-grid">
+            
+            <a href="https://onogenatedwater.xo.je/index" class="sponsor-card">
+                <img src="" alt="Onogenated Water" class="sponsor-logo">
+                <span class="sponsor-name">Onogenated Water</span>
+                <span class="tier-label">Platinum</span>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
